@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import {FaBars,FaTimes} from "react-icons/fa";
 
 function Navbar(){
- 
+  const token = localStorage.getItem("token");
 const [click,setClick]=useState(false);
 const handleClick =()=>setClick(!click);
 const [color,setColor]=useState(false);
@@ -35,18 +35,22 @@ window.addEventListener("scroll",changeColor);
         <li>
             <Link to='/snapDeal'>Snapdeal</Link>
         </li>
-        <li>
+        {
+        token ?<li>
+           <></> 
+        </li>:<li>
             <Link to='/'>Login</Link>
         </li>
-        <li>
-            <Link to='/signup'>SignUp !</Link>
-        </li>
-        {/* <li>
-       
-        <input type="text" name="searchText"value={searchText} onChange={(e)=>setSearchText(e.target.value)}/><button className="btn">Search</button>
 
-        </li> */}
+          }
+        
+        {
+        token ?<li>
+           <></> 
+        </li>:<li><Link to='/signup'>SignUp !</Link></li>
 
+          }
+        
       </ul>
      
       <div className="hamburger" onClick={handleClick}>
